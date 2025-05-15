@@ -20,9 +20,9 @@
                         <h4>ID de Session: <span class="badge bg-secondary">{{ $sessionId }}</span></h4>
 
                         @if(session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
                         @endif
 
                         <div class="row">
@@ -51,7 +51,7 @@
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-header">
-                                        Données de session actuellesHHHH
+                                        Données de session actuelles
                                     </div>
                                     <div class="card-body">
                                         <table class="table table-striped">
@@ -64,20 +64,20 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($sessionData as $key => $value)
-                                                @if(!is_array($value) && $key != '_token' && $key != '_flash')
-                                                <tr>
-                                                    <td>{{ $key }}</td>
-                                                    <td>{{ $value }}</td>
-                                                    <td>
-                                                        <form action="{{ url('/session/' . $key) }}" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-sm btn-danger">Supprimer</button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                @endif
+                                                    @if(!is_array($value) && $key != '_token' && $key != '_flash')
+                                                        <tr>
+                                                            <td>{{ $key }}</td>
+                                                            <td>{{ $value }}</td>
+                                                            <td>
+                                                                <form action="{{ url('/session/' . $key) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                        class="btn btn-sm btn-danger">Supprimer</button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    @endif
                                                 @endforeach
                                             </tbody>
                                         </table>
